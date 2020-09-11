@@ -1,16 +1,18 @@
 // Define the variables
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const number = "1234567890";
-const symbol = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+let symbol = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 let choices = "";
 let askLength = "";
+
 // Changes for user friendly
 const lowerCase = letters.toLowerCase();
-const upperCase = letters.toUpperCase();
 
 // Add quotation mark to the symbol array
-let symbolArray = symbol.split("");
-symbolArray.push('"');
+symbol = symbol.concat('"');
+// let symbolArray = symbol.split("");
+// symbolArray.push('"');
+// console.log(symbol);
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -18,59 +20,63 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the password input
 function writePassword() {
   // var password = generatePassword(askLower, askUpper, askNumber, askSymbol);
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
 
   //  Asking user criteria for creating password
-  let askLength = prompt("How long you want to make your password ?");
-  // while(askLength < 8 || askLength > 128){
+  let askLength = "";
+  while(askLength < 8 || askLength > 128){
+    askLength = prompt("How long you want to make your password ?");
     if(askLength < 8){
       alert("Please put at least 8 characters");
     } else if(askLength > 128){
       alert("Please put no more than 128 characters");
     } 
-  // }
+  }
+
   let askLower = confirm("Do you want to include lowercase?");
   let askUpper = confirm("Do you want to include uppercase?");
   let askNumber = confirm("Do you want to include numbers?");
   let askSymbol = confirm("Do you want to include symbols?");
-  if(askLower === false && askUpper === false && askNumber === false && askSymbol === false){
-    alert("Please select at least one validations!")
-  }
-  var password = generatePassword(askLower, askUpper, askNumber, askSymbol);
+  
+  // While loop to make new alert to make it more user friendly
 
+  var password = generatePassword(askLower, askUpper, askNumber, askSymbol, askLength);
+
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
 
 //  New function
-function generatePassword (a, b, c, d){ 
+function generatePassword (a, b, c, d, askLength){ 
+
+  if(a === false && b === false && c === false && d === false){
+    alert("Please select at least one validations!")
+    return "";
+  }
 
   if(a === true){
     choices = choices.concat(lowerCase);
-    console.log(choices);
   }
   if(b === true){
-    choices = choices.concat(upperCase);
-    console.log(choices);
+    choices = choices.concat(letters);
   }
   if(c === true){
     choices = choices.concat(number);
-    console.log(choices);
   }
   if(d === true){
     choices = choices.concat(symbol);
-    console.log(choices);
   }
 
   let giantArray = choices.split("");
+  let pass = "";
 
-  for(i = 0; i < askLength.length; i++){
+  for(i = 0; i < parseInt(askLength); i++){
     let randomizer = giantArray[Math.floor(Math.random() * giantArray.length)];
-    let pass =+ randomizer;
-    // pass.push(String.fromCharCode(randomizer))
-    // return pass;
-    // console.log(randomizer[i]);
-  }
+    pass = pass.concat(randomizer);
+  } 
+
+  choices = "";
+  return pass;
   // let generatePassword = "";
 
   // length = prompt("How long"); continue to line 54
