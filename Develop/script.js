@@ -1,6 +1,5 @@
 // Define the variables
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// let length = "";
 const number = "1234567890";
 const symbol = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 let choices = "";
@@ -24,12 +23,12 @@ function writePassword() {
   // passwordText.value = password;
 
   //  Asking user criteria for creating password
-  let length = prompt("How long you want to make your password ?");
-    if(length < 8){
+  let askLength = prompt("How long you want to make your password ?");
+    if(askLength < 8){
       alert("Please put at least 8 characters")
-    } else if(length > 128){
+    } else if(askLength > 128){
       alert("Please put no more than 128 characters")
-    }
+    } 
 
   let askLower = confirm("Do you want to include lowercase?");
   let askUpper = confirm("Do you want to include uppercase?");
@@ -62,17 +61,16 @@ function generatePassword (a, b, c, d){
     console.log(choices);
   }
 
-  // const wordDam = choices;
-
   let giantArray = choices.split("");
 
-  for(i = 0; i < length; i+= wordDam){
-    let randomizer = arr[Math.floor(Math.random() * arr.length)];
-    let pass = pass +  randomizer;
-    return pass;
+  for(i = 0; i < askLength.length; i++){
+    let randomizer = giantArray[Math.floor(Math.random() * giantArray.length)];
+    let pass =+ randomizer;
+    // pass.push(String.fromCharCode(randomizer))
+    // return pass;
+    // console.log(randomizer[i]);
   }
-
-  let generatePassword = "";
+  // let generatePassword = "";
 
   // length = prompt("How long"); continue to line 54
 
@@ -89,10 +87,6 @@ function generatePassword (a, b, c, d){
   // let pass += randomizer;
   // return pass
 
-  // Create while loop to rerun when user didn't put numbers of length
-  // while(length !== number){
-  //   length = prompt("Please put number of length!")
-  // }
 }
 
 // Add event listener to generate button
@@ -100,33 +94,4 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // Testing
-// console.log(symbolArray);
-
-// Testing new method
-// const randomArray = {
-//   a: randomLowerCase, b: randomUpperCase, c: randomNumber, d: randomSymbol
-// }
-
-// function randomLowerCase(){
-//   let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//   const lowerCase = letters.toLowerCase();
-//   return lowerCase[Math.floor(Math.random() * lowerCase.length)];
-// }
-
-// function randomUpperCase(){
-//   let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//   const upperCase = letters.toUpperCase();
-//   return upperCase[Math.floor(Math.random() * upperCase.length)];
-// }
-
-// function randomNumber(){
-//   const number = "1234567890";
-//   return number[Math.floor(Math.random() * number.length)];
-// }
-
-// function randomSymbol(){
-//   const symbol = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-//   let symbolArray = symbol.split("");
-//   symbolArray.push('"');
-//   return symbol[Math.floor(Math.random() * symbol.length)];
-// }
+// console.log(giantArray);
