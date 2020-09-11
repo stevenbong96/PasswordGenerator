@@ -3,7 +3,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const number = "1234567890";
 const symbol = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 let choices = "";
-
+let askLength = "";
 // Changes for user friendly
 const lowerCase = letters.toLowerCase();
 const upperCase = letters.toUpperCase();
@@ -24,12 +24,13 @@ function writePassword() {
 
   //  Asking user criteria for creating password
   let askLength = prompt("How long you want to make your password ?");
+  // while(askLength < 8 || askLength > 128){
     if(askLength < 8){
-      alert("Please put at least 8 characters")
+      alert("Please put at least 8 characters");
     } else if(askLength > 128){
-      alert("Please put no more than 128 characters")
+      alert("Please put no more than 128 characters");
     } 
-
+  // }
   let askLower = confirm("Do you want to include lowercase?");
   let askUpper = confirm("Do you want to include uppercase?");
   let askNumber = confirm("Do you want to include numbers?");
