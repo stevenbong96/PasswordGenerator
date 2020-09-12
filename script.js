@@ -11,10 +11,8 @@ let askLength = "";
 const lowerCase = letters.toLowerCase();
 
 // Add quotation mark to the symbol array
-// symbol = symbol.concat('"');
 let symbolArray = symbol.split("");
 symbolArray.push('"');
-// console.log(symbol);
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -39,22 +37,6 @@ function writePassword() {
   let askNumber = confirm("Do you want to include numbers?");
   let askSymbol = confirm("Do you want to include symbols?");
   
-  // While loop to make new alert to make it more user friendly
-  // let askLower = "";
-  // let askUpper = "";
-  // let askNumber = "";
-  // let askSymbol = "";
-  // while(askLower === false && askUpper === false && askNumber === false && askSymbol === false){
-  //   askLower = confirm("Do you want to include lowercase?");
-  //   askUpper = confirm("Do you want to include uppercase?");
-  //   askNumber = confirm("Do you want to include numbers?");
-  //   askSymbol = confirm("Do you want to include symbols?");
-  //   if(askLower === false && askUpper === false && askNumber === false && askSymbol === false){
-  //     alert("Please select at least one validations!")
-  //   }
-  //   return "";
-  // }
-  
   // Generating the password after generatePassword function done with it's process
   var password = generatePassword(askLower, askUpper, askNumber, askSymbol, askLength);
 
@@ -66,9 +48,10 @@ function writePassword() {
 //  New function to generate the random password
 function generatePassword (a, b, c, d, askLength){ 
 
+  // Conditional statement if there is no validation detected from the user
   if(a === false && b === false && c === false && d === false){
     alert("Please select at least one validations!")
-    return ("Invalid Input Validations! Please press the Generate Password button again to!"); 
+    return ("Invalid Input Validations! Please press the Generate Password button again!"); 
   }
 
   // Conditional statement to store each validation to the new variable
